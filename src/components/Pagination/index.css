@@ -1,0 +1,44 @@
+.pages-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.prev-btn,
+.nxt-btn {
+  color: #fff;
+  border: 0;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, cursor 0.3s;
+}
+
+.prev-btn {
+  background-color: tomato;
+  margin-right: 6px;
+}
+
+.nxt-btn {
+  background-color: green;
+  margin-left: 6px;
+}
+
+.prev-btn:disabled,
+.nxt-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.prev-btn:not(:disabled):hover,
+.nxt-btn:not(:disabled):hover {
+  opacity: 0.8;
+}
+
+.current-page {
+  font-size: 1.2rem;
+  margin: 0 10px;
+  font-weight: bold;
+}
