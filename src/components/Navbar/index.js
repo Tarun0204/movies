@@ -18,7 +18,6 @@ const Navbar = ({ onSearch }) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       onSearch(searchQuery);
-      setSearchQuery("");
     }
   };
 

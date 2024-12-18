@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 import { ThreeDots } from "react-loader-spinner";
 import MovieCastDetails from "../MovieCastDetails";
 import Navbar from "../Navbar";
@@ -51,12 +52,18 @@ const SingleMoviePage = () => {
       <Navbar />
       <div className="single-movie-page">
         {isLoading ? (
-          <div className="loader">
+          <div className="loader-container">
             <ThreeDots type="TailSpin" color="#00BFFF" height={80} width={80} />
           </div>
         ) : (
           <>
-         
+            <div className="back-button-container">
+              <Link to="/">
+                <button type="button" className="back-btn">
+                  Back to Home
+                </button>
+              </Link>
+            </div>
             <div className="movie-details">
               <img
                 src={`https://image.tmdb.org/t/p/w500${singleMoviePage.posterPath}`}
@@ -106,10 +113,3 @@ const SingleMoviePage = () => {
 };
 
 export default SingleMoviePage;
-
-/*
-   <div className="back-button-container">
-              <button type="button" className="back-btn">Back to Home</button>
-            </div>
-*/
-

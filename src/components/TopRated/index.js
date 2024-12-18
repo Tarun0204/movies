@@ -74,7 +74,7 @@ class TopRated extends Component {
         <Navbar onSearch={this.handleSearch} />
         <div className="topRated-container">
           {isLoading ? (
-            <div className="jobs-loader-container" data-testid="loader">
+            <div className="loader-container" data-testid="loader">
               <ThreeDots
                 type="ThreeDots"
                 color="#0000"

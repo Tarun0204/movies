@@ -68,7 +68,7 @@ class Home extends Component {
         <Navbar onSearch={this.handleSearch} />
         <div className="home-container">
           {isLoading ? (
-            <div className="jobs-loader-container" data-testid="loader">
+            <div className="loader-container" data-testid="loader">
               <ThreeDots color="#0000ff" height={50} width={50} />
             </div>
           ) : (
