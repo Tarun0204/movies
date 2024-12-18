@@ -201,3 +201,11 @@ body {
     width: 200px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .search-input {
+    width: 180px;
+    margin-left: 70px;
+    border-radius: 12px;
+  }
+}
