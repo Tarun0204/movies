@@ -52,7 +52,7 @@ const Navbar = ({ onSearch }) => {
           <form onSubmit={handleSearch}>
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search any Movie"
               className="search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
