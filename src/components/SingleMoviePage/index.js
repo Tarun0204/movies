@@ -72,24 +72,24 @@ const SingleMoviePage = () => {
               <div className="movie-content">
                 <h1 className="title">{singleMoviePage.originalTitle}</h1>
                 <p className="title-para">{singleMoviePage.overview}</p>
-                <p className="title-para">Tagline: {singleMoviePage.tagline}</p>
+                <p className="title-para"><strong>Tagline: </strong>{singleMoviePage.tagline}</p>
                 <p className="title-para">
-                  Release Date: {singleMoviePage.releaseDate}
+                <strong>Release Date: </strong> {singleMoviePage.releaseDate}
                 </p>
                 <p className="title-para">
-                  Popularity: {singleMoviePage.popularity}
+                <strong>Popularity: </strong>{singleMoviePage.popularity}
                 </p>
                 <p className="title-para">
-                  Runtime: {singleMoviePage.runtime} minutes
+                <strong>Runtime: </strong>{singleMoviePage.runtime} minutes
                 </p>
                 <p className="title-para">
-                  Revenue: ${singleMoviePage.revenue}
+                <strong>Revenue: </strong>${singleMoviePage.revenue}
                 </p>
                 <p className="title-para">
-                  Vote Average: {singleMoviePage.voteAverage}
+                <strong>Vote Average: </strong>{singleMoviePage.voteAverage}
                 </p>
                 <p className="title-para">
-                  Vote Count: {singleMoviePage.voteCount}
+                <strong>Vote Count: </strong>{singleMoviePage.voteCount}
                 </p>
 
                 <h3>Genres:</h3>
