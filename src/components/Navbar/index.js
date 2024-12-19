@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useMatch } from "react-router-dom";
 import "./index.css";
 
 const Navbar = ({ onSearch }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const isSingleMoviePage = useMatch("/movie/:id");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +21,8 @@ const Navbar = ({ onSearch }) => {
       onSearch(searchQuery);
     }
   };
+
+  const shouldHideSearch = isSingleMoviePage;
 
   return (
     <nav className="navbar">
@@ -48,20 +51,23 @@ const Navbar = ({ onSearch }) => {
             Upcoming
           </Link>
         </li>
-        <div className="navbar-search">
-          <form onSubmit={handleSearch}>
-            <input
-              type="text"
-              placeholder="Search any Movie"
-              className="search-input"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit" className="search-btn">
-              <FaSearch />
-            </button>
-          </form>
-        </div>
+        
+        {!shouldHideSearch && (
+          <div className="navbar-search">
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                placeholder="Search"
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="search-btn">
+                <FaSearch />
+              </button>
+            </form>
+          </div>
+        )}
       </ul>
       <button
         type="button"
