@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+import { Link, useLocation, useMatch } from "react-router-dom";
 import "./index.css";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
+  const isSingleMoviePage = useMatch("/movie/:id");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,38 +15,59 @@ const Navbar = () => {
 
   const isActivePage = (path) => (location.pathname === path ? "active" : "");
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      onSearch(searchQuery);
+    }
+  };
+
+  const shouldHideSearch = isSingleMoviePage;
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1>Tarun Kumar</h1>
+        <h1>movieDB</h1>
       </div>
       <ul className={`navbar-links ${isMenuOpen ? "open" : ""}`}>
         <li>
-          <Link className={`nav-link-items ${isActivePage("/about")}`} to="/about">
-            About
+          <Link className={`nav-link-items ${isActivePage("/")}`} to="/">
+            Popular
           </Link>
         </li>
         <li>
           <Link
-            className={`nav-link-items ${isActivePage("/projects")}`}
-            to="/projects"
+            className={`nav-link-items ${isActivePage("/top-rated")}`}
+            to="/top-rated"
           >
-            Projects
-          </Link>
-        </li>
-        <li>
-          <Link className={`nav-link-items ${isActivePage("/skills")}`} to="/skills">
-            Skills
+            Top Rated
           </Link>
         </li>
         <li>
           <Link
-            className={`nav-link-items ${isActivePage("/contact")}`}
-            to="/contact"
+            className={`nav-link-items ${isActivePage("/upcoming")}`}
+            to="/upcoming"
           >
-            Contact
+            Upcoming
           </Link>
         </li>
+        
+        {!shouldHideSearch && (
+          <div className="navbar-search">
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                placeholder="Search"
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" className="search-btn">
+                <FaSearch />
+              </button>
+            </form>
+          </div>
+        )}
       </ul>
       <button
         type="button"
@@ -52,7 +75,9 @@ const Navbar = () => {
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        {isMenuOpen ? <FaTimes /> : <FaBars />}
+        <span className="bar" />
+        <span className="bar" />
+        <span className="bar" />
       </button>
     </nav>
   );
